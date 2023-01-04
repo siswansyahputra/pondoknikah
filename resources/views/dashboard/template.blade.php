@@ -290,17 +290,17 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <label for="password_lama">Password Lama</label>
+                                                        <label for="current_password">Password Lama</label>
                                                         <div class="input-group">
-                                                            <input class="form-control" id="password_lama" name="password_lama" type="password" placeholder="password lama" />
+                                                            <input class="form-control" id="current_password" name="current_password" type="password" placeholder="password lama" required />
                                                             <span class="input-group-addon" id="show-password1">
                                                                 <i id="icon-eye" class="fa fa-eye  bigger-110"></i>
                                                             </span>
                                                         </div>
                                                         <div class="space-4"></div>
-                                                        <label for="password_baru">Password Baru</label>
+                                                        <label for="new_password">Password Baru</label>
                                                         <div class="input-group">
-                                                            <input class="form-control" id="password_baru" name="password_baru" type="password" placeholder="password baru" />
+                                                            <input class="form-control" id="new_password" name="new_password" type="password" placeholder="password baru" required />
                                                             <span class="input-group-addon" id="show-password2">
                                                                 <i id="icon-eye" class="fa fa-eye  bigger-110"></i>
                                                             </span>
@@ -308,7 +308,7 @@
                                                         <div class="space-4"></div>
                                                         <label for="password_confirmation">Ulangi Password</label>
                                                         <div class="input-group">
-                                                            <input class="form-control" id="password_confirmation" name="password_confirmation" type="password" placeholder="ulangi password" />
+                                                            <input class="form-control" id="password_confirmation" name="password_confirmation" type="password" placeholder="ulangi password" required />
                                                             <span class="input-group-addon" id="show-password3">
                                                                 <i id="icon-eye" class="fa fa-eye  bigger-110"></i>
                                                             </span>
@@ -378,7 +378,7 @@
     <!-- <![endif]-->
     <script type="text/javascript">
         document.getElementById('show-password1').addEventListener('mousedown', function() {
-            var passwordInput = document.getElementById('password_lama');
+            var passwordInput = document.getElementById('current_password');
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 document.getElementById('icon-eye').classList.remove('fa-eye');
@@ -386,7 +386,7 @@
             }
         });
         document.getElementById('show-password1').addEventListener('mouseup', function() {
-            var passwordInput = document.getElementById('password_lama');
+            var passwordInput = document.getElementById('current_password');
             if (passwordInput.type === 'text') {
                 passwordInput.type = 'password';
                 document.getElementById('icon-eye').classList.remove('fa-eye-slash');
@@ -394,7 +394,7 @@
             }
         });
         document.getElementById('show-password2').addEventListener('mousedown', function() {
-            var passwordInput = document.getElementById('password_baru');
+            var passwordInput = document.getElementById('new_password');
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 document.getElementById('icon-eye').classList.remove('fa-eye');
@@ -402,7 +402,7 @@
             }
         });
         document.getElementById('show-password2').addEventListener('mouseup', function() {
-            var passwordInput = document.getElementById('password_baru');
+            var passwordInput = document.getElementById('new_password');
             if (passwordInput.type === 'text') {
                 passwordInput.type = 'password';
                 document.getElementById('icon-eye').classList.remove('fa-eye-slash');

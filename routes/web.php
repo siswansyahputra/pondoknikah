@@ -34,8 +34,9 @@ Route::controller(RegistrasiController::class)->group(function () {
     Route::get('/registrasi/validasi', 'create');
 });
 Route::controller(DashboardController::class)->group(function () {
-    Route::get('/dashboard', 'index')->middleware('auth');
+    Route::get('/dashboard', 'index')->name('dashboard')->middleware('auth');
 });
 Route::controller(ProfileController::class)->group(function () {
     Route::get('/profile', 'index')->middleware('auth');
+    Route::post('/change-password', 'changepassword')->middleware('auth');
 });
