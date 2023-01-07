@@ -1,7 +1,7 @@
 @extends('dashboard/template')
 @section('content')
-@if(session()->has('success'))
-<div class="alert alert-info">
+@if(session()->has('Passwordsuccess'))
+<div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert">
         <i class="ace-icon fa fa-times"></i>
     </button>
@@ -10,7 +10,7 @@
     <br />
 </div>
 @endif
-@if(session()->has('failed'))
+@if(session()->has('Passwordfailed'))
 <div class="alert alert-danger">
     <button type="button" class="close" data-dismiss="alert">
         <i class="ace-icon fa fa-times"></i>

@@ -171,7 +171,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#modal-password" role="button" data-toggle="modal">
+                                <a href="/form-password">
                                     <i class="ace-icon fa fa-key"></i>
                                     Ubah Password
                                 </a>
@@ -278,60 +278,6 @@
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
                             @yield('content')
-                            <div id="modal-password" class="modal" tabindex="-1">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <form action="/change-password" method="post">
-                                            @csrf
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="blue bigger">Ubah Password</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <label for="current_password">Password Lama</label>
-                                                        <div class="input-group">
-                                                            <input class="form-control" id="current_password" name="current_password" type="password" placeholder="password lama" required />
-                                                            <span class="input-group-addon" id="show-password1">
-                                                                <i id="icon-eye" class="fa fa-eye  bigger-110"></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="space-4"></div>
-                                                        <label for="new_password">Password Baru</label>
-                                                        <div class="input-group">
-                                                            <input class="form-control" id="new_password" name="new_password" type="password" placeholder="password baru" required />
-                                                            <span class="input-group-addon" id="show-password2">
-                                                                <i id="icon-eye" class="fa fa-eye  bigger-110"></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="space-4"></div>
-                                                        <label for="password_confirmation">Ulangi Password</label>
-                                                        <div class="input-group">
-                                                            <input class="form-control" id="password_confirmation" name="password_confirmation" type="password" placeholder="ulangi password" required />
-                                                            <span class="input-group-addon" id="show-password3">
-                                                                <i id="icon-eye" class="fa fa-eye  bigger-110"></i>
-                                                            </span>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-sm" data-dismiss="modal">
-                                                    <i class="ace-icon fa fa-times"></i>
-                                                    Cancel
-                                                </button>
-
-                                                <button type="submit" class="btn btn-sm btn-primary">
-                                                    <i class="ace-icon fa fa-check"></i>
-                                                    Simpan
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- PAGE CONTENT ENDS -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -376,56 +322,7 @@
     <script src="assets/js/jquery-2.1.4.min.js"></script>
 
     <!-- <![endif]-->
-    <script type="text/javascript">
-        document.getElementById('show-password1').addEventListener('mousedown', function() {
-            var passwordInput = document.getElementById('current_password');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                document.getElementById('icon-eye').classList.remove('fa-eye');
-                document.getElementById('icon-eye').classList.add('fa-eye-slash');
-            }
-        });
-        document.getElementById('show-password1').addEventListener('mouseup', function() {
-            var passwordInput = document.getElementById('current_password');
-            if (passwordInput.type === 'text') {
-                passwordInput.type = 'password';
-                document.getElementById('icon-eye').classList.remove('fa-eye-slash');
-                document.getElementById('icon-eye').classList.add('fa-eye');
-            }
-        });
-        document.getElementById('show-password2').addEventListener('mousedown', function() {
-            var passwordInput = document.getElementById('new_password');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                document.getElementById('icon-eye').classList.remove('fa-eye');
-                document.getElementById('icon-eye').classList.add('fa-eye-slash');
-            }
-        });
-        document.getElementById('show-password2').addEventListener('mouseup', function() {
-            var passwordInput = document.getElementById('new_password');
-            if (passwordInput.type === 'text') {
-                passwordInput.type = 'password';
-                document.getElementById('icon-eye').classList.remove('fa-eye-slash');
-                document.getElementById('icon-eye').classList.add('fa-eye');
-            }
-        });
-        document.getElementById('show-password3').addEventListener('mousedown', function() {
-            var passwordInput = document.getElementById('password_confirmation');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                document.getElementById('icon-eye').classList.remove('fa-eye');
-                document.getElementById('icon-eye').classList.add('fa-eye-slash');
-            }
-        });
-        document.getElementById('show-password3').addEventListener('mouseup', function() {
-            var passwordInput = document.getElementById('password_confirmation');
-            if (passwordInput.type === 'text') {
-                passwordInput.type = 'password';
-                document.getElementById('icon-eye').classList.remove('fa-eye-slash');
-                document.getElementById('icon-eye').classList.add('fa-eye');
-            }
-        });
-    </script>
+    <script src="assets/js/custome.js"></script>
     <!--[if IE]>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->

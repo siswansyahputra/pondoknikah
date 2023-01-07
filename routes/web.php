@@ -37,6 +37,8 @@ Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard')->middleware('auth');
 });
 Route::controller(ProfileController::class)->group(function () {
-    Route::get('/profile', 'index')->middleware('auth');
+    Route::get('/profile', 'index')->name('profile')->middleware('auth');
+    Route::get('/form-password', 'formPassword')->middleware('auth');
     Route::post('/change-password', 'changepassword')->middleware('auth');
+    Route::get('/update-profile', 'updateProfile')->middleware('auth');
 });
