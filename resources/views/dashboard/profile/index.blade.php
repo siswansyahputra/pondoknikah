@@ -51,12 +51,22 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" for="kode_referral"> Kode Referral </label>
+                <label class="col-sm-2 control-label no-padding-right" for="referral_link"> Link Referral </label>
                 <div class="col-sm-10">
-                    @if(empty(auth()->user()->kode_referral))
-                    <label class="control-label"> {{ "empty" }}</label>
+                    @if(empty(auth()->user()->referral_code))
+                    <label class="control-label text-warning"> {{ "empty" }}</label>
                     @else
-                    <label class="control-label">{{ auth()->user()->kode_referral }}</label>
+                    <label class="control-label text-info">{{ route('registrasi') }}?reff={{ auth()->user()->referral_code  }}</label>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="referral_code"> Kode Referral </label>
+                <div class="col-sm-10">
+                    @if(empty(auth()->user()->referral_code))
+                    <label class="control-label text-warning"> {{ "empty" }}</label>
+                    @else
+                    <label class="control-label text-info">{{ auth()->user()->referral_code }}</label>
                     @endif
 
                 </div>
@@ -65,9 +75,9 @@
                 <label class="col-sm-2 control-label no-padding-right" for="referral"> Referral </label>
                 <div class="col-sm-10">
                     @if(empty(auth()->user()->referral))
-                    <label class="control-label">{{ "empty" }}</label>
+                    <label class="control-label text-warning">{{ "empty" }}</label>
                     @else
-                    <label class="control-label">{{ auth()->user()->referral }}</label>
+                    <label class="control-label text-info">{{ $data['reff']->name }}</label>
                     @endif
                 </div>
             </div>
@@ -83,11 +93,6 @@
             </div>
             <div class="space-4"></div>
             <div class="pull-right">
-                <button class="btn btn-sm" data-dismiss="modal">
-                    <i class="ace-icon fa fa-times"></i>
-                    Cancel
-                </button>
-
                 <button type="submit" id="update_password" class="btn btn-sm btn-primary">
                     <i class="ace-icon fa fa-pencil-square-o"></i>
                     Update

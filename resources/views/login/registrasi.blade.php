@@ -51,7 +51,7 @@
         @enderror
     </div>
     <div class="form-floating mb-4">
-        <input type="text" id="referral" name="referral" class=" form-control @error('referral') is-invalid @enderror" placeholder="Masukkan kode referral jika ada" value="{{ old('referral')}}" />
+        <input type="text" id="referral" name="referral" class=" form-control" placeholder="Masukkan kode referral jika ada" @if(!empty($data['reff'])) value="{{ $data['reff'] }}" readonly @endif />
         <label class="form-label" for="referral">Kode Referral</label>
         @error('referral')
         <div class="invalid-feedback">

@@ -14,12 +14,13 @@ class RegistrasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = [
             'identity' => Identity::find(),
             'title' => "Registrasi",
-            'description' => ""
+            'description' => "",
+            'reff' => $request->query('reff')
         ];
 
         return view('login.registrasi', compact('data'));
@@ -39,7 +40,7 @@ class RegistrasiController extends Controller
             'password' => 'required|min:6|max:255',
             'password_confirmation' => 'required|min:6|max:255|same:password',
             'nowa' => 'required|min:10|max:20',
-            'referral' => 'max:20'
+            'referral' => 'max:6'
         ]);
 
         // Enkripsi password

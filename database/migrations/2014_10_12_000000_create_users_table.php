@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('password');
             $table->string('nowa');
+            $table->string('referral_code')->nullable();
             $table->string('referral')->nullable();
             $table->string('level')->default('customer');
             $table->enum('active', array('y', 'n'))->default('y');

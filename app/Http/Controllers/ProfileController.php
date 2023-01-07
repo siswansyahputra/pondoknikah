@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Identity;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,9 +16,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        $reff = auth()->user()->referral;
         $data = [
             'identity' => Identity::find(),
-            'title' => "Profile"
+            'title' => "Profile",
+            'reff' => User::find($reff)
         ];
         return view('dashboard.profile.index', compact('data'));
     }

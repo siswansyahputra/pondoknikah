@@ -30,7 +30,8 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/logout', 'logout')->middleware('auth');
 });
 Route::controller(RegistrasiController::class)->group(function () {
-    Route::get('/registrasi', 'index')->middleware('guest');
+    // Route::get('/registrasi', 'index')->name('registrasi')->middleware('guest');
+    Route::get('/registrasi', 'index')->name('registrasi');
     Route::get('/registrasi/validasi', 'create');
 });
 Route::controller(DashboardController::class)->group(function () {
