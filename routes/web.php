@@ -30,16 +30,17 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/logout', 'logout')->middleware('auth');
 });
 Route::controller(RegistrasiController::class)->group(function () {
-    // Route::get('/registrasi', 'index')->name('registrasi')->middleware('guest');
-    Route::get('/registrasi', 'index')->name('registrasi');
+    Route::get('/registrasi', 'index')->name('registrasi')->middleware('guest');
     Route::get('/registrasi/validasi', 'create');
 });
-Route::controller(DashboardController::class)->group(function () {
-    Route::get('/dashboard', 'index')->name('dashboard')->middleware('auth');
-});
-Route::controller(ProfileController::class)->group(function () {
-    Route::get('/profile', 'index')->name('profile')->middleware('auth');
-    Route::get('/form-password', 'formPassword')->middleware('auth');
-    Route::post('/change-password', 'changepassword')->middleware('auth');
-    Route::get('/update-profile', 'updateProfile')->middleware('auth');
+Route::middleware(['menu'])->group(function () {
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('dashboard')->middleware('auth');
+    });
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'index')->name('profile')->middleware('auth');
+        Route::get('/form-password', 'formPassword')->middleware('auth');
+        Route::post('/change-password', 'changepassword')->middleware('auth');
+        Route::get('/update-profile', 'updateProfile')->middleware('auth');
+    });
 });

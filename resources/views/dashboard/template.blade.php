@@ -238,13 +238,44 @@
 
             <ul class="nav nav-list">
                 <li class="">
-                    <a href="index.html">
+                    <a href="/dashboard">
                         <i class="menu-icon fa fa-tachometer"></i>
                         <span class="menu-text"> Dashboard </span>
                     </a>
 
                     <b class="arrow"></b>
                 </li>
+                @foreach($menu as $menu)
+                @if($menu->dropdown=='y')
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa {{ $menu->icon }}"></i>
+                        <span class="menu-text"> {{ $menu->name }} </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="#">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Sub Menu
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                @else
+                <li class="">
+                    <a href="{{ $menu->route }}">
+                        <i class="menu-icon fa {{ $menu->icon }}"></i>
+                        <span class="menu-text"> {{ $menu->name }} </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                @endif
+                @endforeach
             </ul><!-- /.nav-list -->
 
             <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
