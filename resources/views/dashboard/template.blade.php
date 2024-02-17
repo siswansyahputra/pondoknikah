@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Administrator | {{ $data['title'] }}</title>
+    <title>Administrator | {{ $navbar['title'] }}</title>
 
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -66,7 +66,7 @@
                 <a href="/dashboard" class="navbar-brand">
                     <small>
                         <i class="fa fa-desktop"></i>
-                        {{ $data['identity']->name }}
+                        {{ $navbar['identity']->name }}
                     </small>
                 </a>
             </div>
@@ -76,33 +76,33 @@
                     <li class="purple dropdown-modal">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                            <span class="badge badge-important">8</span>
+                            <span class="badge badge-important">{{ $navbar['countNotifi'] }}</span>
                         </a>
 
                         <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
                             <li class="dropdown-header">
                                 <i class="ace-icon fa fa-exclamation-triangle"></i>
-                                8 Notifications
+                                {{ $navbar['countNotifi'] }} Notifications
                             </li>
-
+                            @foreach($navbar['notifi'] as $notifi)
                             <li class="dropdown-content">
                                 <ul class="dropdown-menu dropdown-navbar navbar-pink">
                                     <li>
-                                        <a href="#">
+                                        <a href="/view-notifications">
                                             <div class="clearfix">
                                                 <span class="pull-left">
                                                     <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                    New Comments
+                                                    {{ $notifi->data }}
                                                 </span>
-                                                <span class="pull-right badge badge-info">+12</span>
+                                                <span class="pull-right badge badge-info">{{ $notifi->notifiable_type }}</span>
                                             </div>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-
+                            @endforeach
                             <li class="dropdown-footer">
-                                <a href="#">
+                                <a href="/all-notifications">
                                     See all notifications
                                     <i class="ace-icon fa fa-arrow-right"></i>
                                 </a>
@@ -291,7 +291,7 @@
                             <i class="ace-icon fa fa-home home-icon"></i>
                             <a href="/dashboard">Dashboard</a>
                         </li>
-                        <li class="active">{{ $data['title'] }}</li>
+                        <li class="active">{{ $navbar['title'] }}</li>
                     </ul><!-- /.breadcrumb -->
 
                     <div class="nav-search" id="nav-search">

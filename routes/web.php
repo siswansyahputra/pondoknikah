@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\NotificationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +35,7 @@ Route::controller(RegistrasiController::class)->group(function () {
     Route::get('/registrasi', 'index')->name('registrasi')->middleware('guest');
     Route::get('/registrasi/validasi', 'create');
 });
-Route::middleware(['menu'])->group(function () {
+Route::middleware(['menu', 'navbar'])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'index')->name('dashboard')->middleware('auth');
     });
@@ -42,5 +44,13 @@ Route::middleware(['menu'])->group(function () {
         Route::get('/form-password', 'formPassword')->middleware('auth');
         Route::post('/change-password', 'changepassword')->middleware('auth');
         Route::get('/update-profile', 'updateProfile')->middleware('auth');
+    });
+    Route::controller(MemberController::class)->group(function () {
+        Route::get('/customer', 'customer')->name('customer')->middleware(['auth', 'authorize']);
+    });
+    Route::controller(NotificationsController::class)->group(function () {
+        Route::get('/submit-reseller', 'submitReseller')->name('submitReseller')->middleware('customer');
+        Route::get('/view-notifications', 'viewNotifi')->name('viewNotifi')->middleware('admin');
+        Route::get('/all-notifications', 'allNotifi')->name('allNotifi')->middleware('admin');
     });
 });

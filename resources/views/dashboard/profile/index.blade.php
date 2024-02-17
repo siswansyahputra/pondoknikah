@@ -21,6 +21,16 @@
             <br />
         </div>
         @endif
+        @if(session()->has('submitSuccess'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+            <strong>Berhasil...</strong>
+            Pengajuan reseller telah berhasil diajukan, manager akan segera menilainya...
+            <br />
+        </div>
+        @endif
         <form class="form-horizontal" method="get" action="/update-profile" role="form">
             <div class="form-group">
                 <label class="col-sm-2 control-label no-padding-right" for="username"> Username </label>
@@ -89,6 +99,17 @@
                             {{ auth()->user()->level}}
                         </span>
                     </label>
+                    @if(auth()->user()->level=='customer')
+                    <a class="blue" href="#modal-reseller" data-toggle="modal">
+                        <i class="ace-icon fa fa-hand-o-right"></i>
+                        Ajukan menjadi reseller
+                    </a>
+                    @elseif(auth()->user()->level=='reseller')
+                    <a class="blue" href="#modal-manager" data-toggle="modal">
+                        <i class="ace-icon fa fa-hand-o-right"></i>
+                        Ajukan menjadi manager
+                    </a>
+                    @endif
                 </div>
             </div>
             <div class="space-4"></div>
@@ -99,6 +120,45 @@
                 </button>
             </div>
         </form>
+    </div>
+</div>
+<div id="modal-reseller" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="blue bigger">Konfirmasi</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        @if(auth()->user()->level=='customer')
+                        Apakah anda yakin akan mengajukan menjadi reseller?
+                        @else
+                        Apakah anda yakin akan mengajukan menjadi manager?
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm" data-dismiss="modal">
+                    <i class="ace-icon fa fa-times"></i>
+                    Cancel
+                </button>
+                @if(auth()->user()->level=='customer')
+                <a href="/submit-reseller" class="btn btn-sm btn-primary">
+                    <i class="ace-icon fa fa-check"></i>
+                    Ajukan
+                </a>
+                @else
+                <a href="/submit-manager" class="btn btn-sm btn-primary">
+                    <i class="ace-icon fa fa-check"></i>
+                    Ajukan
+                </a>
+                @endif
+            </div>
+        </div>
     </div>
 </div>
 @endsection

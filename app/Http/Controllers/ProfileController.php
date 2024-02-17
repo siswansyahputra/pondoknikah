@@ -18,19 +18,13 @@ class ProfileController extends Controller
     {
         $reff = auth()->user()->referral;
         $data = [
-            'identity' => Identity::find(),
-            'title' => "Profile",
             'reff' => User::find($reff)
         ];
         return view('dashboard.profile.index', compact('data'));
     }
     public function formPassword()
     {
-        $data = [
-            'identity' => Identity::find(),
-            'title' => "Change Password"
-        ];
-        return view('dashboard.profile.password', compact('data'));
+        return view('dashboard.profile.password');
     }
 
     public function changepassword(Request $request)

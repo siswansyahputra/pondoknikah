@@ -29,5 +29,17 @@ class UsersSeeder extends Seeder
                 'created_at' => Carbon::now()
             ]
         );
+        DB::table('users')->insert(
+            [
+                'username' => "tanti92",
+                'name' => "Tanti Sri Gusti",
+                'password' => bcrypt("123456"),
+                'nowa' => "083197444205",
+                'referral_code' => Str::random(6),
+                'level' => "customer",
+                'active' => "y",
+                'created_at' => Carbon::now()
+            ]
+        );
     }
 }

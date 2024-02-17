@@ -5,15 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\Identity;
 use Illuminate\Http\Request;
+use App\Models\Notifications;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $data = [
-            'identity' => Identity::find(),
-            'title' => "Home"
-        ];
-        return view('dashboard.index', compact('data'));
+        return view('dashboard.index');
     }
 }
